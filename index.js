@@ -94,6 +94,9 @@ export function apply(ctx) {
     bindAgent(agent)
   })
 
+  // A reload lands after some agents already exist; bind those too.
+  for (const agent of ctx.get('agents')?.list?.() ?? []) bindAgent(agent)
+
   ctx.on('agent/disposed', ({ agent }) => {
     agents.get(agent.id)?.()
     agents.delete(agent.id)
@@ -133,12 +136,7 @@ export function apply(ctx) {
           if (cwd === undefined) return sendJson(res, 400, { ok: false, error: 'cwd-required' })
           try {
             const value = await refresh(cwd, true)
-            return sendJson(res, 200, { ok: true, ...value, debug: {
-              cwd,
-              binding: path.join(cwd, BINDING_PATH),
-              entries: await listCandidates(cwd),
-              raw: await readFile(path.join(cwd, BINDING_PATH), 'utf8').then((text) => text.slice(0, 120), (error) => `ERR ${error.code}`),
-            } })
+            return sendJson(res, 200, { ok: true, ...value })
           } catch (error) {
             return sendJson(res, 500, { ok: false, error: 'state-failed' })
           }
@@ -191,7 +189,7 @@ export function apply(ctx) {
 async function computeState(cwd) {
   const binding = await readBinding(cwd)
   if (binding === null) {
-    const candidates = await listCandidates(cwd)
+    const candidates = (await listCandidates(cwd)).filter(isPlausibleStart)
     return { state: 'unbound', file: null, label: null, candidate: candidates[0] ?? null }
   }
   const absolute = resolveScript(cwd, binding.file)
@@ -265,6 +263,15 @@ function rank(name) {
   if (lower.startsWith('run')) return 1
   if (lower.includes('dev') || lower.includes('serve')) return 2
   return 3
+}
+
+/**
+ * A plausible start script is one whose name says so. Root-level scripts with
+ * unrelated jobs (`一键卸载IDM.cmd`, `_migrate-plugin.ps1`) must never be
+ * offered as the start script, so the name — not the extension — decides.
+ */
+function isPlausibleStart(name) {
+  return /启动|start|^run|dev|serve|launch/i.test(name)
 }
 
 function promptLine(value) {
