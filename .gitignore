@@ -1,0 +1,6 @@
+node_modules/
+.test workspace/
+probe/
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,3 @@
+- insert:
+    - id: dsh-run-button
+      name: '@local/dsh-run-button'

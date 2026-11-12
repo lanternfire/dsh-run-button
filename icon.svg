@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Run Button">
+  <rect x="3" y="3" width="58" height="58" rx="15" fill="#1F6FEB"/>
+  <rect x="3.5" y="3.5" width="57" height="57" rx="14.5" fill="none" stroke="#0B4FB5" stroke-opacity="0.45"/>
+  <path d="M25.5 19.8a1.8 1.8 0 0 1 2.74-1.53l20.4 12.2a1.8 1.8 0 0 1 0 3.06L28.24 45.73A1.8 1.8 0 0 1 25.5 44.2z" fill="#FFFFFF"/>
+</svg>

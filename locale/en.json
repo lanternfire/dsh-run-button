@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Run Button",
+    "description": "Adds a header button that launches the project's start script, exactly like double-clicking it in Explorer."
+  }
+}
