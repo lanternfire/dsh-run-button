@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "description": "DSH 会话标题栏的一键启动按钮：点一下就像在资源管理器里双击一样运行项目里的启动脚本。",
+  "license": "MIT",
+  "author": "lanternfire",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lanternfire/dsh-run-button.git"
+  },
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
@@ -15,6 +22,15 @@
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "run",
+    "launch",
+    "script"
   ],
   "dsh": {
     "bundle": {
