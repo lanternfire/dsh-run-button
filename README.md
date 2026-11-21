@@ -41,11 +41,25 @@
 
 ## 安装
 
+在 DSH 的插件管理器里「添加插件」，填入仓库地址：
+
+```
+https://github.com/lanternfire/dsh-run-button
+```
+
+装好后可能需要重启 DSH 才会加载。
+
+也可以直接指向本地目录（开发时用）：
+
 ```bash
 plugin_manager install_bundle  <克隆后的绝对路径>
 ```
 
-或用 DSH 的插件管理器指向本地目录。
+> GitHub 地址是直连拉取的，不走 npm 源；网络不通时请走代理，或把包发布到 npm 后按包名安装。
+
+## 更新
+
+插件管理器不允许覆盖安装：先卸载，再按同样的地址装一次。每次发版请提升 `version`。
 
 ## 目录
 

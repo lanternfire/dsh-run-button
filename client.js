@@ -6,7 +6,7 @@
  * like double-clicking that file in Explorer.
  */
 window.__ModuleLoader__.load({
-  id: '@local/dsh-run-button',
+  id: '@lanternfire/dsh-run-button',
   factory(require) {
     const React = require('react')
     const h = React.createElement
@@ -178,7 +178,7 @@ window.__ModuleLoader__.load({
       apply(ctx) {
         ctx.effect(() => {
           const style = document.createElement('style')
-          style.setAttribute('data-dsh-plugin', '@local/dsh-run-button')
+          style.setAttribute('data-dsh-plugin', '@lanternfire/dsh-run-button')
           style.textContent = CSS
           document.head.appendChild(style)
           return () => style.remove()

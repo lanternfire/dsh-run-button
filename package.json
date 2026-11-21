@@ -1,5 +1,5 @@
 {
-  "name": "@local/dsh-run-button",
+  "name": "@lanternfire/dsh-run-button",
   "version": "0.1.0",
   "private": true,
   "type": "module",
